@@ -88,7 +88,20 @@ button, input, i {
     border-radius: 4px;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
+    animation: fadein 2s;
 }
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+  }
 
 .images .card .details {
     position: absolute;
@@ -129,27 +142,58 @@ button, input, i {
     margin-bottom: 0;
     font-weight: 600;
 }
-
+.download-btn-container {
+    display: flex;
+    justify-content: center;
+}
 .images img {
     width: 100%;
 }
 
 .gallery .load-more {
     margin: 50px 0px;
-    color: #fff;
+    color: #000000;
     cursor: pointer;
     font-size: 1rem;
     padding: 12px 27px;
-    background: #8a6cff;
+    /* background: #8a6cff; */
+    background-color: #fff;
+    border: 1px solid #c5c5c5;
+    transition: 0.3s;
+}
+
+.gallery .load-more:hover {
+    background: #000000;
+    color: white;
+}
+.gallery .load-more.disabled {
+    opacity: 0.6;
+    pointer-events: none;
 }
 
 .light-box {
     position: fixed;
+    opacity: 0;
     display: none;
     z-index: 5;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.65);
+    transition: opacity 0.3s linear;
+    animation: lightbox 1s ease;
+}
+
+@keyframes lightbox {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+.light-box.display {
+    display: block;
+}
+
+.light-box.animation {
+    opacity: 1;
 }
 
 .light-box .wrapper {
